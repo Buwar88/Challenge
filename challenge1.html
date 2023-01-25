@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <meta charset="UTF-8">
+
+    <header>
+        <title>Aplicación para encriptar y desencriptar</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        
+    </header>
+
+    <body>
+        <section>
+            
+            <div class="entrada">
+                <img src="imagenes/Logo.png" class= "logo" alt="">
+                <input id="texto" type="text" placeholder="Ingrese el texto aqui">
+                <p>Solo letras mayúsculas y minúsculas</p>
+            </div>
+            
+            <div class="botones">
+                
+                <button class="butt1" id="btnEncriptar">Encriptar</button>
+                <button class="butt2" id="btnDesencriptar">Desencriptar</button>
+            </div>
+        </section>
+
+        <section class="salida">
+            <div class="muñeco">
+                <img src="imagenes/Muñeco.png" alt="">
+            </div>
+            <div class="result">
+                <textarea id="salida">Ningún texto fue encontrado</textarea>
+                <p id="limpiar">Ingrese el texto que desea encriptar o desencriptar</p>
+            </div>
+            <button class="butt1" id="btnCopiar">Copiar</button>
+        </section>
+
+        <script>
+            var texto = document.getElementById("texto");
+            var button1 = document.querySelector("#btnEncriptar");
+            var button2 = document.querySelector("#btnDesencriptar");
+            var resultado = document.getElementById("salida");
+            var button3 = document.querySelector("#btnCopiar");
+            var limpiar = document.getElementById("limpiar")
+
+
+            function encriptar() {
+                encr = texto.value.replace(/e/gi, "enter").replace(/i/gi, "imes").replace(/a/gi, "ai").replace(/o/gi, "ober").replace(/u/gi, "ufat");
+                resultado.value = "";
+                resultado.value = encr;
+                limpiar.value = "";
+            }
+            function desencriptar(){
+                decr = texto.value.replace(/enter/gi, "e").replace(/imes/gi, "i").replace(/ai/gi, "a").replace(/ober/gi, "o").replace(/ufat/gi, "u");
+                resultado.value = "";
+                resultado.value = decr;
+                limpiar.value = "";
+            }
+            function copiar(){
+                resultado.select();
+                document.execCommand("copy");
+                alert("Texto copiado");
+            }
+            button1.onclick = encriptar;
+            button2.onclick = desencriptar;
+            button3.onclick = copiar;
+
+        </script>
+        
+    </body>
+</html>
